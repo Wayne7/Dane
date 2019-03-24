@@ -1,0 +1,149 @@
+doctype html
+html(lang='cs')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Daně
+    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.0/jspdf.min.js')
+    link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i', rel='stylesheet')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.4.1/css/all.css', integrity='sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz', crossorigin='anonymous')
+    link(href='css/one-page-wonder.min.css', rel='stylesheet')
+    link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='css/style.css')
+    link(rel='stylesheet', type='text/css', href='css/main.css')
+    // Kalendář
+    link(rel='stylesheet', href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/themes/base/jquery-ui.css', type='text/css', media='all')
+    link(rel='stylesheet', href='http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css', type='text/css', media='all')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js', type='text/javascript')
+    script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.8/jquery-ui.min.js', type='text/javascript')
+  body
+    // Navigation
+    nav.navbar.navbar-expand-lg.navbar-dark.navbar-custom.fixed-top
+      .container
+        img(src="img/danofert_white.png" width="20%")
+        a.brand(href='index.php')
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              button#download.buttonMenu(type='button')
+                i.fa.fa-download(aria-hidden='true')
+                |   Uložit přiznání
+            li.nav-item
+              button.buttonMenu(type='button', onclick="$('#ulozit').slideDown();")
+                i.fa.fa-upload(aria-hidden='true')
+                |   Nahrát z PC
+            #ulozit.none(style='margin-top:10px;')
+              hr
+              input#upload(type='file')
+    script.
+      $(document).ready(function(){
+      $('[data-toggle="popover"]').popover();
+      });
+    script(type='text/javascript').
+      $(function() {
+      $('.my_features').on("change",function() {
+      $('#'+$(this).attr('data-name')).toggle(this.checked); // toggle instead
+      }).change(); // trigger the change
+      });
+    script.
+      $(document).ready(function(){
+      $('input:checkbox').click(function() {
+      $('input:checkbox').not(this).prop('checked', false);
+      });
+      });
+    script.
+      $(document).ready(function() {
+      $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+      var $total = navigation.find('li').length;
+      var $current = index+1;
+      var $percent = ($current/$total) * 100;
+      $('#rootwizard .progress-bar').css({width:$percent+'%'});
+      }});
+      });
+    // Funkce formulář
+    script(type='text/javascript', src='js/info.js')
+    script(type='text/javascript', src='js/sazba.js')
+    script(type='text/javascript', src='js/ostatni.js')
+    script(type='text/javascript', src='js/clear.js')
+    script(type='text/javascript', src='js/ucetnictvi.js')
+    script(type='text/javascript', src='js/najem.js')
+    script(type='text/javascript', src='js/form.js')
+    script.
+      vydaje_procenta1();
+      vydaje_procenta2();
+      vydaje_procenta1_2();
+      vydaje_procenta2_2();
+      vydaje_procenta1_3();
+      vydaje_procenta2_3();
+      vydaje_procenta1_4();
+      vydaje_procenta2_4();
+      ostatni_procenta1();
+      clear_sazba_cinnost2();
+      clear_sazba_cinnost3();
+      clear_sazba_cinnost4();
+      clear_evidence_cinnost2();
+      clear_evidence_cinnost3();
+      clear_evidence_cinnost4();
+      clear_najem1();
+      clear_najem2();
+      clear_ostatni2();
+      clear_ostatni3();
+      clear_ostatni4();
+      uzemni_pracoviste();
+      celkem_prijmy();
+      celkem_vydaje();
+      celkem_vydaje_ostatni();
+      celkem_prijmy_ostatni();
+      rozdil_prijmy_vydaje2();
+      rozdil_prijmy_vydaje_ostatni();
+      najem_procenta();
+      celkova_dan();
+
+    block content
+
+    block footer
+        footer.footer2.py-5.bg-black
+            p.m-0.text-center.text-white.small Copyright © Daně jednoduše 2019
+            // /.container
+            // Bootstrap core JavaScript
+            script(type='text/javascript', src='js/createPDF.js')
+            script.
+                $.datepicker.regional['cs'] = {
+                closeText: 'Cerrar',
+                prevText: 'Předchozí',
+                nextText: 'Další',
+                currentText: 'Hoy',
+                monthNames: ['Leden','Únor','Březen','Duben','Květen','Červen', 'Červenec','Srpen','Září','Říjen','Listopad','Prosinec'],
+                monthNamesShort: ['Le','Ún','Bř','Du','Kv','Čn', 'Čc','Sr','Zá','Ří','Li','Pr'],
+                dayNames: ['Neděle','Pondělí','Úterý','Středa','Čtvrtek','Pátek','Sobota'],
+                dayNamesShort: ['Ne','Po','Út','St','Čt','Pá','So',],
+                dayNamesMin: ['Ne','Po','Út','St','Čt','Pá','So'],
+                weekHeader: 'Sm',
+                dateFormat: 'dd.mm.yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''};
+                $.datepicker.setDefaults($.datepicker.regional['cs']);
+                $(".datepicker").datepicker({dateFormat: "d.m.yy"});
+            script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+            script(src='vendor/jquery/jquery.min.js')
+            script(src='https://d3js.org/d3.v3.js')
+            script(type='text/javascript', src='js/saveLoad.js')
+            script(type='text/javascript', src='js/main.js')
+            script(type='text/javascript', src='js/toggle.js')
+            script(type='text/javascript', src='js/xmlExport.js')
+            script(src='http://code.jquery.com/jquery-latest.js')
+            script(src='bootstrap/js/bootstrap.min.js')
+            script(src='jquery.bootstrap.wizard.js')
+            script(src='prettify.js')
+            script.
+                $(document).ready(function() {
+                $('#rootwizard').bootstrapWizard();
+                window.prettyPrint && prettyPrint()
+                });

@@ -1,0 +1,171 @@
+extends layout.pug
+
+block content
+  .wrapper
+      .container
+        .color.card-2(style='background-color: #fff;')
+          #rootwizard
+            .navbar
+              ul.nav.nav-pills(style='background-color: #efefef;')
+                li.vypocet
+                  a(href='#tab1', data-toggle='tab') 1
+                li.vypocet
+                  a(href='#tab2', data-toggle='tab') 2
+                li.vypocet
+                  a(href='#tab3', data-toggle='tab') 3
+                li.vypocet
+                  a(href='#tab4', data-toggle='tab') 4
+                li.vypocet
+                  a(href='#tab5', data-toggle='tab') 5
+                li.vypocet
+                  a(href='#tab6', data-toggle='tab') 6
+                li.vypocet
+                  a(href='#tab7', data-toggle='tab') 7
+                li.vypocet
+                  a(href='#tab8', data-toggle='tab') 8
+                li.vypocet
+                  a(href='#tab9', data-toggle='tab') 9
+                li.vypocet
+                  a(href='#tab10', data-toggle='tab') 10
+                li.vypocet
+                  a(href='#tab11', data-toggle='tab') 11
+                li.vypocet
+                  a(href='#tab12', data-toggle='tab') 12
+                li.vypocet
+                  a(href='#tab13', data-toggle='tab') 13
+                li.vypocet
+                  a(href='#tab14', data-toggle='tab') 14
+                li.vypocet
+                  a(href='#tab15', data-toggle='tab') 15
+                li.vypocet
+                  a(href='#tab16', data-toggle='tab') 16
+                li.vypocet
+                  a(href='#tab17', data-toggle='tab') 17
+                li.vypocet
+                  a(href='#tab18', data-toggle='tab') 18
+                li.vypocet
+                  a(href='#tab19', data-toggle='tab') 19
+                li.vypocet
+                  a(href='#tab20', data-toggle='tab') 20
+                li.vypocet
+                  a(href='#tab21', data-toggle='tab') 21
+                li.vypocet
+                  a(href='#tab22', data-toggle='tab') 22
+                li.vypocet
+                  a(href='#tab23', data-toggle='tab') 23
+                li.vypocet
+                  a(href='#tab24', data-toggle='tab') 24
+                li.vypocet
+                  a(href='#tab25', data-toggle='tab') 25
+                li.vypocet
+                  a(href='#tab26', data-toggle='tab') 26
+                li.vypocet
+                  a(href='#tab27', data-toggle='tab') 27
+                li.vypocet
+                  a(href='#tab28', data-toggle='tab') 28
+            #bar.progress
+              .progress-bar.bg-success.progress-bar-striped(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: 0%;')
+            form#csvForm
+              .tab-content
+
+                mixin otazka(title='Default Title', helpNadpis='Default', helpPopis ='Default')
+                  h3.otazka= title
+                    a.napoveda(
+                      tabindex='0',
+                      data-toggle='popover',
+                      data-html='true',
+                      data-trigger='focus',
+                      data-placement='top',
+                      title= helpNadpis,
+                      data-content= helpPopis)
+                      i.fas.fa-question-circle
+
+                mixin napoveda(nazev='Default', popis ='Default')
+                  a.napoveda(
+            		  	tabindex='0',
+            			  data-toggle='popover',
+            			  data-html='true',
+            			  data-trigger='focus',
+            			  data-placement='top',
+            			  title= nazev,
+            			  data-content= popis)
+                    i.fas.fa-question-circle
+
+                //PŘÍJMY
+                #tab1.tab-pane
+                 include otazky/samostatna_cinnost.pug
+                #tab2.tab-pane
+                 include otazky/zmena_cinnost.pug
+                #tab3.tab-pane
+                 include otazky/pocet_mesicu.pug
+                #tab4.tab-pane
+                 include otazky/zamestnani.pug
+                #tab5.tab-pane
+                 include otazky/najem.pug
+                #tab6.tab-pane
+                 include otazky/kapitalovy_majetek.pug
+                #tab7.tab-pane
+                 include otazky/ostatni_prijmy.pug
+                #tab8.tab-pane
+                 include otazky/komanditni_spolecnost_vos.pug
+                //SLEVY
+                #tab9.tab-pane
+                 include otazky/sleva_na_manzelku.pug
+                #tab10.tab-pane
+                 include otazky/sleva_na_dite.pug
+                #tab11.tab-pane
+                 include otazky/sleva_na_invaliditu.pug
+                #tab12.tab-pane
+                 include otazky/sleva_na_materskou_skolu.pug
+                #tab13.tab-pane
+                 include otazky/sleva_na_eet.pug
+                #tab14.tab-pane
+                 include otazky/sleva_na_studenta.pug
+                //NEZDANITELNE CASTI
+                #tab15.tab-pane
+                 include otazky/darcovstvi_krve.pug
+                #tab16.tab-pane
+                 include otazky/dar.pug
+                #tab17.tab-pane
+                 include otazky/zivotni_pojisteni.pug
+                #tab18.tab-pane
+                 include otazky/penzijni_pojisteni.pug
+                #tab19.tab-pane
+                 include otazky/hypoteka.pug
+                #tab20.tab-pane
+                 include otazky/vzdelani.pug
+                #tab21.tab-pane
+                 include otazky/zapocet_ztraty.pug
+                #tab22.tab-pane
+                 include otazky/prispevky.pug
+                #tab23.tab-pane
+                 include otazky/zvyseni.pug
+                #tab24.tab-pane
+                 include otazky/snizeni.pug
+                // ÚDAJE O POPLATNÍKOVI
+                #tab25.tab-pane
+                 include otazky/udaje.pug
+                #tab26.tab-pane
+                 include otazky/bydliste.pug
+                #tab27.tab-pane
+                 include otazky/informace.pug
+                #tab28.tab-pane
+                 include otazky/zaver.pug
+
+                input#celkemVydajeSazba(type='hidden', name='celkemVydajeSazba')
+                input#celkemPrijemSazba(type='hidden', name='celkemPrijemSazba')
+                input#rozdilPrijemVydaje(type='hidden', name='rozdilPrijemVydaje')
+                input#celkemVydajeOstatni(type='hidden', name='celkemVydajeOstatni')
+                input#celkemPrijemOstatni(type='hidden', name='celkemPrijemOstatni')
+                input#rozdilPrijemVydajeOstatni(type='hidden', name='rozdilPrijemVydajeOstatni')
+                input#slevaNaPoplatnika(type='hidden', name='slevaNaPoplatnika', value='24840')
+                ul.pager.wizard
+                  li#btnPrev.previous
+                    a.smer(href='#') Předchozí
+                  .vypocet
+                    li#btnNext.next
+                      a.smer(href='#') Další
+                .alert.alert-warning.res(role='alert')
+                  | Vaše daň vychází na:
+                  input#celkovaDan.dan(disabled='')
+                  | Kč
